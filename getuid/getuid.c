@@ -1,18 +1,15 @@
 #include<stdio.h>
-#include<unistd.h>
+#include<stdlib.h>
 #include<pwd.h>
+#include<unistd.h>
 int main()
 {
 	struct passwd *pwd;
-	int p=getuid();
-	uid_t uid;
-	printf("uid%d\n:",p);
-	printf("euid%d\n",geteuid());
-	printf("gid%d\n",getgid());
-	printf("geid%d\n:",getegid());
-	if((pwd=getpwuid(getuid()))==NULL)
-		printf("nop\n");
-	else
-		printf("name :%s",pwd->pw_name);
-
-}
+	if((pwd=getpwuid(getuid()))!=NULL)
+	{
+		printf("username :%s\n",pwd->pw_name);
+		printf("dir :%s\n",pwd->pw_dir);
+		printf("shell :%s\n",pwd->pw_shell);
+	//	printf("username :%s\n",pwd->pw_name);
+	}
+}w
